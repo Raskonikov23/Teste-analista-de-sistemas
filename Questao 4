@@ -1,0 +1,17 @@
+let monthlyRevenue = {
+  'SP': 67836.43,
+  'RJ': 36678.66,
+  'MG': 29229.88,
+  'ES': 27165.48,
+  'Outros': 19849.53
+};
+
+let totalRevenue = 0;
+for (let state in monthlyRevenue) {
+  totalRevenue += monthlyRevenue[state];
+}
+
+for (let state in monthlyRevenue) {
+  let percentage = monthlyRevenue[state] / totalRevenue * 100;
+  console.log(state + ': ' + percentage.toFixed(2) + '%');
+}
