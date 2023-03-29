@@ -1,0 +1,26 @@
+ .then(response => response.json())
+  .then(data => {
+    let totalRevenue = 0, nonZeroDays = 0, maxRevenue = -Infinity, minRevenue = Infinity;
+    for (let value of data) {
+      if (value > 0) {
+        totalRevenue += value;
+        nonZeroDays++;
+        if (value > maxRevenue) {
+          maxRevenue = value;
+        }
+        if (value < minRevenue) {
+          minRevenue = value;
+        }
+      }
+    }
+    let avgDailyRevenue = totalRevenue / nonZeroDays;
+    let daysAboveAvg = 0;
+    for (let value of data) {
+      if (value > avgDailyRevenue) {
+        daysAboveAvg++;
+      }
+    }
+    console.log('Minimum daily revenue:', minRevenue);
+    console.log('Maximum daily revenue:', maxRevenue);
+    console.log('Number of days with revenue above average:', daysAboveAvg);
+  });
